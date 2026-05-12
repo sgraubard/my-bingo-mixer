@@ -40,6 +40,61 @@ Business logic → `utils/bingoLogic.ts`. State → `hooks/useBingoGame.ts`. Com
 - Tailwind CSS v4 — CSS-first config via `@theme`, no `tailwind.config.js` — see [tailwind-4.instructions.md](instructions/tailwind-4.instructions.md)
 - GitHub Pages base path: `/${VITE_REPO_NAME}/game/` (set by CI); use root-relative asset paths
 
+## Design Guide
+
+### Visual Design Principles
+
+- **Fun & Engaging**: Use vibrant colors, smooth animations, and playful interactions to create an energetic mixer atmosphere
+- **Clear Hierarchy**: Bingo board should be the focal point; use size, color, and spacing to guide attention
+- **Touch-Friendly**: Minimum 44×44px tap targets; generous spacing between interactive elements
+- **Instant Feedback**: Provide immediate visual/haptic feedback on all interactions (square toggles, button clicks)
+
+### Component Styling
+
+- **BingoSquare**:
+  - Clear distinction between marked/unmarked states (color, border, icon)
+  - Free space should be visually distinct but harmonious
+  - Smooth transition animations (~200ms)
+  - Text should be legible at all sizes (min 14px)
+- **Buttons**:
+  - Primary actions: High contrast, prominent placement
+  - Secondary actions: Subdued but discoverable
+  - Disabled states: Clear visual indication
+
+- **Modal/Overlay**:
+  - Semi-transparent backdrop for context
+  - Clear close affordances
+  - Animation: fade in backdrop, slide/scale in content
+
+### Color & Theme
+
+- Use Tailwind's CSS-first `@theme` configuration (see [tailwind-4.instructions.md](instructions/tailwind-4.instructions.md))
+- Maintain WCAG AA contrast ratios (4.5:1 for text, 3:1 for UI elements)
+- Consider color-blind safe palettes
+- Use semantic color tokens (e.g., `--color-success`, `--color-primary`)
+
+### Responsive Design
+
+- Mobile-first approach (game will primarily be played on phones)
+- Board should fill viewport efficiently on all screen sizes
+- Typography scales with viewport (use `clamp()` or Tailwind responsive utilities)
+- Test on narrow devices (320px) and tablets (768px+)
+
+### Accessibility
+
+- All interactive elements must be keyboard accessible
+- Provide `aria-label` for icon-only buttons
+- Use semantic HTML (`<button>`, `<main>`, `<header>`)
+- Focus indicators must be clearly visible
+- Screen reader announcements for game state changes
+
+### Animation Guidelines
+
+- Use `prefers-reduced-motion` media query to disable/reduce animations
+- Keep animations purposeful and quick (150-300ms)
+- Celebrate wins with delightful but not overwhelming effects
+- Use CSS transitions over JavaScript animations when possible
+
 ## Workshop
 
 Lab guides in [`workshop/`](../workshop/GUIDE.md). Do not modify unless asked.
