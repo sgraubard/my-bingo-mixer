@@ -62,25 +62,24 @@ describe('bingoLogic', () => {
 
     it('should randomize question order between boards', () => {
       // Mock Math.random to make it deterministic for first call
-      const originalRandom = Math.random;
       let callCount = 0;
-      vi.spyOn(Math, 'random').mockImplementation(() => {
+      const randomSpy = vi.spyOn(Math, 'random').mockImplementation(() => {
         callCount++;
         return callCount / 100;
       });
 
       const board1 = generateBoard();
-      
+
       // Reset counter for second board
       callCount = 0;
       const board2 = generateBoard();
 
-      Math.random = originalRandom;
+      randomSpy.mockRestore();
 
       // Boards should have different order (very unlikely to be the same with randomization)
       const texts1 = board1.filter((s) => !s.isFreeSpace).map((s) => s.text);
       const texts2 = board2.filter((s) => !s.isFreeSpace).map((s) => s.text);
-      
+
       // At least verify structure is correct
       expect(texts1).toHaveLength(24);
       expect(texts2).toHaveLength(24);
@@ -137,7 +136,9 @@ describe('bingoLogic', () => {
 
     it('should not change anything for a non-existent square ID', () => {
       const newBoard = toggleSquare(mockBoard, 999);
-      expect(newBoard.map((s) => s.isMarked)).toEqual(mockBoard.map((s) => s.isMarked));
+      expect(newBoard.map((s) => s.isMarked)).toEqual(
+        mockBoard.map((s) => s.isMarked),
+      );
     });
 
     it('should support toggling the same square back and forth', () => {
