@@ -1,47 +1,74 @@
 export const questions: string[] = [
-  // Easy Wins - Music (simple, common)
-  'has a favorite song from the 90s',
-  'uses Spotify or Apple Music daily',
-  'sings in the shower',
-  'has been to a concert this year',
-  'can name 3 albums they love',
+  // Easy Wins - Food & Drink
+  'loves spicy food',
+  'drinks coffee every day',
+  'has tried sushi',
+  'can cook at least 3 dishes from memory',
+  'has a favorite local restaurant',
+  'puts pineapple on pizza (or strongly opposes it)',
 
-  // Easy Wins - Art & Design
-  'has artwork on their walls at home',
-  'follows a designer or artist on social media',
-  'has taken a photo for fun today',
-  'prefers dark mode over light mode',
-  'has strong opinions about fonts',
+  // Easy Wins - Entertainment
+  'has binge-watched a show this month',
+  'cried during a movie recently',
+  'has a favorite meme they reference often',
+  'follows at least 3 podcasts',
+  'plays video games',
 
-  // Medium - Creative Skills & Hobbies
+  // Easy Wins - Lifestyle
+  'is a morning person (or night owl)',
+  'has more than 20 unread texts right now',
+  'makes their bed every day (or never)',
+  'has plants at home',
+  'prefers cats over dogs (or vice versa)',
+  'still has a physical calendar or planner',
+
+  // Medium - Hobbies & Skills
+  "can solve a Rubik's cube",
+  'knows how to change a tire',
+  'has gone camping in the past year',
+  'does yoga or meditation',
   'plays or used to play an instrument',
-  'has tried painting or drawing in the last year',
-  'can sketch a quick self-portrait right now',
-  'writes creatively (poetry, stories, journals)',
-  'does photography as a hobby',
-  'makes music playlists for specific moods',
-  'has customized their phone/laptop aesthetic',
-  'dabbles in graphic design or illustration',
+  'speaks more than one language',
+  'has run a 5K or marathon',
+  'knows all the words to a rap song',
 
-  // Medium - Taste & Preferences
-  'has a go-to album for focus or relaxation',
-  'prefers analog over digital (vinyl, film, paper)',
-  'can recommend an underrated artist or band',
-  'has strong feelings about kerning or color theory',
-  'collects art prints, posters, or zines',
+  // Medium - Travel & Adventure
+  'has been to at least 3 countries',
+  'has been on a road trip over 500 miles',
+  'has gone skydiving or bungee jumping',
+  'has gotten lost in a foreign city',
+  'prefers beach over mountains (or vice versa)',
+  'has tried food that scared them',
 
-  // Bold/Action - Creative Challenges
-  'can hum or whistle a tune right now',
-  'will show you their most-played song this month',
-  'can teach you a 10-second drawing trick',
-  'has made something by hand in the past month',
-  'will share a creative fail or experiment',
+  // Bold/Funny - Quirks & Confessions
+  "has a hidden talent they'll demonstrate",
+  'still uses an alarm clock from their childhood',
+  'has worn the same outfit two days in a row',
+  'talks to their pet like a person',
+  'has faked knowing a song to fit in',
+  'has Googled themselves in the past week',
+  "has a celebrity crush they'll admit to",
+  'can do an impression right now',
 
-  // Bold - Uncommon Skills
-  'can improvise music or freestyle lyrics',
-  'has exhibited art or performed publicly',
-  'knows how to use design software (Figma, Photoshop, etc.)',
-  'has a secret creative project in progress',
+  // Bold - Surprising & Unique
+  'has met someone famous',
+  'has a tattoo (visible or hidden)',
+  'has been on TV or in a newspaper',
+  'knows all 50 U.S. states (or can name 10 countries)',
+  'has broken a bone',
+  'can juggle or do a magic trick',
+  'has a weird collection (show it!)',
+  "has eaten something most people haven't",
+
+  // Deep Cut - Conversation Starters
+  'has a scar with a good story',
+  'changed their career path at least once',
+  'has a recurring dream they remember',
+  'knows their Myers-Briggs or astrology sign',
+  'has performed on stage (music, theater, dance)',
+  'writes in a journal regularly',
+  'has a side hustle or passion project',
+  'believes in ghosts or the supernatural',
 ];
 
 export const FREE_SPACE = 'FREE SPACE';

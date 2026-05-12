@@ -16,6 +16,13 @@ export function GameScreen({
   onSquareClick,
   onReset,
 }: GameScreenProps) {
+  // Calculate stats
+  const markedCount = board.filter(
+    (sq) => sq.isMarked && !sq.isFreeSpace,
+  ).length;
+  const totalSquares = 24; // Excluding free space
+  const progressPercent = Math.round((markedCount / totalSquares) * 100);
+
   return (
     <div className="flex flex-col min-h-full">
       {/* Header - Wood grain effect */}
@@ -27,8 +34,27 @@ export function GameScreen({
           ← Back
         </button>
         <h1 className="font-bold text-cream text-xl">Bingo Mixer</h1>
-        <div className="w-16"></div>
+        <div className="text-cream text-sm font-bold">
+          {markedCount}/{totalSquares}
+        </div>
       </header>
+
+      {/* Stats bar */}
+      <div className="bg-warm-paper-alt px-4 py-2 border-b border-latte-dark">
+        <div className="flex items-center justify-between text-xs text-espresso-medium mb-1">
+          <span>
+            🤝 People met:{' '}
+            <strong className="text-espresso">{markedCount}</strong>
+          </span>
+          <span>{progressPercent}%</span>
+        </div>
+        <div className="w-full bg-latte-dark rounded-full h-2 overflow-hidden">
+          <div
+            className="h-full bg-gradient-to-r from-coffee-stain to-espresso-medium transition-all duration-300 ease-out"
+            style={{ width: `${progressPercent}%` }}
+          />
+        </div>
+      </div>
 
       {/* Instructions - Menu board aesthetic */}
       <p className="text-center text-espresso-medium text-sm py-3 px-4 bg-warm-paper-alt border-b border-latte-dark italic">

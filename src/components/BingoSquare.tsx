@@ -1,4 +1,5 @@
 import type { BingoSquareData } from '../types';
+import { playMarkSound } from '../utils/soundEffects';
 
 interface BingoSquareProps {
   square: BingoSquareData;
@@ -7,6 +8,13 @@ interface BingoSquareProps {
 }
 
 export function BingoSquare({ square, isWinning, onClick }: BingoSquareProps) {
+  const handleClick = () => {
+    if (!square.isFreeSpace) {
+      playMarkSound();
+    }
+    onClick();
+  };
+
   const baseClasses =
     'relative flex items-center justify-center p-2 text-center border-2 rounded transition-all duration-200 select-none min-h-[60px] text-xs leading-tight shadow-sm';
 
@@ -19,9 +27,9 @@ export function BingoSquare({ square, isWinning, onClick }: BingoSquareProps) {
       'bg-espresso text-cream border-espresso-dark font-bold text-sm shadow-md';
   } else if (square.isMarked) {
     if (isWinning) {
-      // Winning: Deep coffee brown with warm glow
+      // Winning: Glowing gold/yellow highlight with animation
       stateClasses =
-        'bg-coffee-stain text-cream border-espresso shadow-lg ring-2 ring-coffee-stain-dark ring-opacity-50';
+        'bg-gradient-to-br from-yellow-300 to-amber-400 text-espresso-dark border-yellow-500 shadow-xl ring-4 ring-yellow-400/50 animate-pulse font-bold scale-105';
     } else {
       // Marked: Latte cream with coffee stain border
       stateClasses = 'bg-latte border-coffee-stain-dark text-espresso-dark';
@@ -34,7 +42,7 @@ export function BingoSquare({ square, isWinning, onClick }: BingoSquareProps) {
 
   return (
     <button
-      onClick={onClick}
+      onClick={handleClick}
       disabled={square.isFreeSpace}
       className={`${baseClasses} ${stateClasses}`}
       aria-pressed={square.isMarked}
@@ -42,8 +50,12 @@ export function BingoSquare({ square, isWinning, onClick }: BingoSquareProps) {
     >
       <span className="wrap-break-word hyphens-auto">{square.text}</span>
       {square.isMarked && !square.isFreeSpace && (
-        <span className="absolute top-0.5 right-0.5 text-coffee-stain-dark text-base font-bold">
-          ✓
+        <span
+          className={`absolute top-0.5 right-0.5 text-base font-bold ${
+            isWinning ? 'text-espresso-dark text-xl' : 'text-coffee-stain-dark'
+          }`}
+        >
+          {isWinning ? '🎉' : '✓'}
         </span>
       )}
     </button>
